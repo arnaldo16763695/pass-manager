@@ -1,10 +1,10 @@
 import React from 'react'
-import Header from '../(home)/components/Header'
+import HeaderMain from '../(home)/components/HeaderMain'
 
 export default function ProfilePage() {
     return (
         <div>
-            <Header />
+            <HeaderMain />
 
         </div>
     )

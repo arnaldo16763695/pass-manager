@@ -1,5 +1,5 @@
 import Logo from "./Logo"
-import SidebarRoutes from "./sidebarRotes/SidebarRoutes"
+import SidebarRoutes from "./sidebarRoutes/SidebarRoutes"
 
 function SideBar() {
     return (

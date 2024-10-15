@@ -1,6 +1,6 @@
 import Logo from "@/components/shared/Logo";
 import SideBar from "@/components/shared/SideBar";
-
+import SideBarMobile from "@/components/shared/sideBarMobile/SideBarMobile";
 
 export default function HomeLayout({
   children,
@@ -14,7 +14,7 @@ export default function HomeLayout({
           <Logo />
         </div>
         <div>
-          sidebar mobile
+          <SideBarMobile />
         </div>
       </div>
       <div className="flex h-full">
@@ -22,12 +22,9 @@ export default function HomeLayout({
           <SideBar />
         </div>
         <div className="w-full lg:pl-72">
-          <div className="p-6">
-            {children}
-          </div>
+          <div className="p-6">{children}</div>
         </div>
       </div>
     </main>
-
   );
 }
