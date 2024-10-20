@@ -29,8 +29,10 @@ import { generatePass } from "@/lib/generatePass";
 import { Textarea } from "@/components/ui/textarea";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import { FormAddElementProps } from "./formAddElement.type";
 
-export default function FormAddElement() {
+export default function FormAddElement(props: FormAddElementProps) {
+  const { userId } = props;
   const [showPass, setShowPass] = useState(false);
   const router = useRouter();
   // 1. Define your form.
@@ -43,8 +45,8 @@ export default function FormAddElement() {
       name: "",
       notes: "",
       password: "",
-      urlWebSite: "",
-      userId: "",
+      urlWebsite: "",
+      userId,
       username: "",
     },
   });
@@ -66,17 +68,16 @@ export default function FormAddElement() {
         name: "",
         notes: "",
         password: "",
-        urlWebSite: "",
-        userId: "",
+        urlWebsite: "",
         username: "",
       });
-
       router.refresh();
     } catch (error) {
       toast({
         title: "Something went wrong",
         variant: "destructive",
       });
+      return console.log(error);
     }
   };
 
@@ -96,7 +97,7 @@ export default function FormAddElement() {
   };
 
   const updateURL = () => {
-    form.setValue("urlWebSite", window.location.href);
+    form.setValue("urlWebsite", window.location.href);
   };
 
   return (
@@ -225,7 +226,7 @@ export default function FormAddElement() {
         {/* urlwebsite input */}
         <FormField
           control={form.control}
-          name="urlWebSite"
+          name="urlWebsite"
           render={({ field }) => (
             <FormItem>
               <FormLabel>Url website</FormLabel>

@@ -21,8 +21,10 @@ import { ChevronDown } from "lucide-react";
 import { dataHeaderMain } from "./headerMain.data";
 import { useState } from "react";
 import FormAddElement from "./FormAddElement";
+import { HeaderMainProps } from "./headerMain.type";
 
-export default function HeaderMain() {
+export default function HeaderMain(props: HeaderMainProps) {
+  const {userId} = props;
   const [typeElement, setTypeElement] = useState<"password" | "folder" | "">();
   const [openDialog, setOpenDialog] = useState(false);
   const [openDropDown, setOpenDropDown] = useState(false);
@@ -68,7 +70,7 @@ export default function HeaderMain() {
           <DialogHeader>
             <DialogTitle>Nuevo elemento</DialogTitle>
           </DialogHeader>
-          {typeElement === "password" && <FormAddElement />}
+          {typeElement === "password" && <FormAddElement userId={userId} />}
           {typeElement === "folder" && <p>Form folder</p>}
         </DialogContent>
       </Dialog>

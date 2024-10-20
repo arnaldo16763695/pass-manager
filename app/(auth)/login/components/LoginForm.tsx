@@ -44,9 +44,9 @@ const LoginForm = () => {
         title: "Loged successfuly",
       });
       router.push("/");
-    } else {
+    } else if (response?.error) {
       toast({
-        title: "Error",
+        title: response?.error,
         variant: "destructive",
       });
     }
