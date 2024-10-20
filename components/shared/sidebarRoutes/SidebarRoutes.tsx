@@ -9,6 +9,7 @@ import { BarChart, Power, House, RectangleEllipsis } from 'lucide-react';
 import SingleItem from "../singleItem/SingleItem";
 import { dataSidebar, dataSidebarConfig } from "./sideBarRoutesData";
 import Link from "next/link";
+import { signOut } from "next-auth/react";
 
 
 export default function SidebarRoutes() {
@@ -80,7 +81,7 @@ export default function SidebarRoutes() {
             }
 
             <SingleItem href="/analytic" label="Analytics" icon={BarChart}/>
-            <SingleItem href="#" label="Sign out"  icon={Power} onClick={()=>console.log('sign out')}/>
+            <SingleItem href="#" label="Sign out"  icon={Power} onClick={()=>signOut()}/>
         </div>
 
 

@@ -27,10 +27,12 @@ import { useToast } from "@/hooks/use-toast";
 import { useState } from "react";
 import { generatePass } from "@/lib/generatePass";
 import { Textarea } from "@/components/ui/textarea";
+import axios from "axios";
+import { useRouter } from "next/navigation";
 
 export default function FormAddElement() {
   const [showPass, setShowPass] = useState(false);
-
+  const router = useRouter();
   // 1. Define your form.
   const form = useForm<z.infer<typeof formAddElementSchema>>({
     resolver: zodResolver(formAddElementSchema),
@@ -48,10 +50,34 @@ export default function FormAddElement() {
   });
 
   // 2. Define a submit handler.
-  const onSubmit = (values: z.infer<typeof formAddElementSchema>) => {
+  const onSubmit = async (values: z.infer<typeof formAddElementSchema>) => {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
-    console.log(values);
+    // console.log(values);
+    try {
+      await axios.post("/api/items", values);
+      toast({
+        title: "Item created",
+      });
+      form.reset({
+        typeElement: "",
+        directory: "",
+        isFavorite: false,
+        name: "",
+        notes: "",
+        password: "",
+        urlWebSite: "",
+        userId: "",
+        username: "",
+      });
+
+      router.refresh();
+    } catch (error) {
+      toast({
+        title: "Something went wrong",
+        variant: "destructive",
+      });
+    }
   };
 
   //Gereate passwor
