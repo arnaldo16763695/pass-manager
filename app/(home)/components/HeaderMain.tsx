@@ -36,7 +36,7 @@ export default function HeaderMain(props: HeaderMainProps) {
 
   return (
     <div className="flex justify-between items-center">
-      <h1 className="text-xl md:text-3xl font-semibold">
+      <h1  className="text-xl md:text-3xl font-semibold">
         Todas las cajas fuertes
       </h1>
       <Dialog open={openDialog} onOpenChange={setOpenDialog}>
