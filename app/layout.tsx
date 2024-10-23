@@ -1,14 +1,12 @@
 import type { Metadata } from "next";
-import {Poppins} from 'next/font/google'
+import { Poppins } from "next/font/google";
 import "./globals.css";
-import { Toaster } from "@/components/ui/toaster"
+import { Toaster } from "@/components/ui/toaster";
 
 const poppins = Poppins({
- subsets: ["latin"],
- weight: ["200", "400", "500", "800" ]
+  subsets: ["latin"],
+  weight: ["200", "400", "500", "800"],
 });
-
-
 
 export const metadata: Metadata = {
   title: "Password Manger",
@@ -22,9 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${poppins.className}antialiased`}
-      >
+      <body className={`${poppins.className}antialiased`}>
         {children}
         <Toaster />
       </body>

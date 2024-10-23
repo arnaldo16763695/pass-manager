@@ -2,7 +2,6 @@
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -11,9 +10,7 @@ import {
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuItem,
   DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
@@ -37,7 +34,7 @@ export default function HeaderMain(props: HeaderMainProps) {
   return (
     <div className="flex justify-between items-center">
       <h1  className="text-xl md:text-3xl font-semibold">
-        Todas las cajas fuertes
+      All the safes
       </h1>
       <Dialog open={openDialog} onOpenChange={setOpenDialog}>
         <DropdownMenu open={openDropDown} onOpenChange={setOpenDropDown}>
@@ -70,7 +67,7 @@ export default function HeaderMain(props: HeaderMainProps) {
           <DialogHeader>
             <DialogTitle>Nuevo elemento</DialogTitle>
           </DialogHeader>
-          {typeElement === "password" && <FormAddElement userId={userId} />}
+          {typeElement === "password" && <FormAddElement userId={userId} closeDialog={closeDialog} />}
           {typeElement === "folder" && <p>Form folder</p>}
         </DialogContent>
       </Dialog>

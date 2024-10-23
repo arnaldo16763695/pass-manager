@@ -13,7 +13,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { formAddElementSchema } from "@/lib/zod";
+import { formEditElementSchema } from "@/lib/zod";
 import {
   Select,
   SelectContent,
@@ -29,51 +29,41 @@ import { generatePass } from "@/lib/generatePass";
 import { Textarea } from "@/components/ui/textarea";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import { FormAddElementProps } from "./formAddElement.type";
+import { formEditElementProps } from "@/components/shared/formEditElement/formEditElementTypes";
 
-export default function FormAddElement(props: FormAddElementProps) {
-  const { userId, closeDialog } = props;
+const FormEditElement = (props: formEditElementProps) => {
+  const { dataElement } = props;
   const [showPass, setShowPass] = useState(false);
+
   const router = useRouter();
   // 1. Define your form.
-  const form = useForm<z.infer<typeof formAddElementSchema>>({
-    resolver: zodResolver(formAddElementSchema),
+  const form = useForm<z.infer<typeof formEditElementSchema>>({
+    resolver: zodResolver(formEditElementSchema),
     defaultValues: {
-      typeElement: "",
-      directory: "",
-      isFavorite: false,
-      name: "",
-      notes: "",
-      password: "",
-      urlWebsite: "",
-      userId,
-      username: "",
+      typeElement: dataElement.typeElement,
+      directory: dataElement.directory ?? '',
+      isFavorite: dataElement.isFavorite,
+      name: dataElement.name ?? '',
+      notes: dataElement.notes ?? '',
+      password: dataElement.password ?? '',
+      urlWebsite: dataElement.urlWebsite ?? '',
+      username: dataElement.username ?? '',
     },
   });
 
   // 2. Define a submit handler.
   const { toast } = useToast();
-  const onSubmit = async (values: z.infer<typeof formAddElementSchema>) => {
+  const onSubmit = async (values: z.infer<typeof formEditElementSchema>) => {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
     // console.log(values);
     try {
-      await axios.post("/api/items", values);
+      await axios.patch(`/api/items/${dataElement.id}`, values);
       toast({
-        title: "Item created",
+        title: "Item edited ✌️",
       });
-      form.reset({
-        typeElement: "",
-        directory: "",
-        isFavorite: false,
-        name: "",
-        notes: "",
-        password: "",
-        urlWebsite: "",
-        username: "",
-      });
-      closeDialog();
-      router.refresh();
+ 
+      router.push('/');
     } catch (error) {
       toast({
         title: "Something went wrong",
@@ -83,24 +73,23 @@ export default function FormAddElement(props: FormAddElementProps) {
     }
   };
 
-  //Gereate passwor
-  const generateRamdomPass = () => {
-    const password = generatePass();
-    // console.log('mi pass es: ', password)
-    form.setValue("password", password);
-  };
-
-  const copyClipBoard = async (value: string) => {
-    await navigator.clipboard.writeText(value);
-    toast({
-      title: "Value copied  ✅",
-    });
-  };
-
-  const updateURL = () => {
-    form.setValue("urlWebsite", window.location.href);
-  };
-
+    //Gereate passwor
+    const generateRamdomPass = () => {
+      const password = generatePass();
+      // console.log('mi pass es: ', password)
+      form.setValue("password", password);
+    };
+  
+    const copyClipBoard = async (value: string) => {
+      await navigator.clipboard.writeText(value);
+      toast({
+        title: "Value copied  ✅",
+      });
+    };
+  
+    const updateURL = () => {
+      form.setValue("urlWebsite", window.location.href);
+    };
   return (
     <Form {...form}>
       <form
@@ -313,4 +302,6 @@ export default function FormAddElement(props: FormAddElementProps) {
       </form>
     </Form>
   );
-}
+};
+
+export default FormEditElement;

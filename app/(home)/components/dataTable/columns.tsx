@@ -5,6 +5,7 @@ import { toast } from "@/hooks/use-toast";
 import { Element } from "@prisma/client";
 import { ColumnDef } from "@tanstack/react-table";
 import { Copy, MoreHorizontal, User } from "lucide-react";
+import Link from "next/link";
 
 export type ColumnsProps = Element;
 
@@ -31,9 +32,11 @@ export const columns: ColumnDef<ColumnsProps>[] = [
     cell: ({ row }) => {
       const password = row.original.password;
       const username = row.original.username;
-      const onEditElement = () => {
-        console.log("Editando elemento");
-      };
+      
+      // const onEditElement = () => {
+      //   console.log('editando')
+      // };
+
       const copyItemClipboard = (item: string, name: string) => {
         navigator.clipboard.writeText(item);
         toast({
@@ -61,7 +64,7 @@ export const columns: ColumnDef<ColumnsProps>[] = [
                 <DropdownMenuLabel>
                   Actions
                 </DropdownMenuLabel>
-                <DropdownMenuItem className="cursor-pointer" onClick={onEditElement}>Edit</DropdownMenuItem>
+                <DropdownMenuItem className="cursor-pointer" ><Link href={`/element/${row.original.id}/edit`}>Edit</Link></DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
         </div>

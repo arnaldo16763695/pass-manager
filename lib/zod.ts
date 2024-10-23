@@ -13,6 +13,17 @@ export const formAddElementSchema = z.object({
 
 });
 
+export const formEditElementSchema = z.object({
+  typeElement: z.string().min(2).max(50),
+  isFavorite: z.boolean().default(false),
+  name: z.string().min(2).max(50),
+  username: z.string().min(2).max(50),
+  directory: z.string().min(2).max(50),
+  password: z.string().min(2).max(50),
+  urlWebsite: z.string().min(2).max(50),
+  notes: z.string(),
+});
+
 
 export const loginFormSchema = z.object({
     email: z.string().min(1).email(),
