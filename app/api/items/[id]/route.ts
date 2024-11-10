@@ -17,8 +17,8 @@ export async function PATCH(
         ...validatedData,
       },
     });
-    const res = NextResponse.json(element)
-    console.log('--*--> ' , res)
+    // const res = NextResponse.json(element)
+    // console.log('--*--> ' , res)
     return NextResponse.json(element)
   } catch (error) {
     console.log(error);

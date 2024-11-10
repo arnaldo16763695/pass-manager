@@ -41,13 +41,13 @@ const FormEditElement = (props: formEditElementProps) => {
     resolver: zodResolver(formEditElementSchema),
     defaultValues: {
       typeElement: dataElement.typeElement,
-      directory: dataElement.directory ?? '',
+      directory: dataElement.directory ?? "",
       isFavorite: dataElement.isFavorite,
-      name: dataElement.name ?? '',
-      notes: dataElement.notes ?? '',
-      password: dataElement.password ?? '',
-      urlWebsite: dataElement.urlWebsite ?? '',
-      username: dataElement.username ?? '',
+      name: dataElement.name ?? "",
+      notes: dataElement.notes ?? "",
+      password: dataElement.password ?? "",
+      urlWebsite: dataElement.urlWebsite ?? "",
+      username: dataElement.username ?? "",
     },
   });
 
@@ -62,8 +62,9 @@ const FormEditElement = (props: formEditElementProps) => {
       toast({
         title: "Item edited ✌️",
       });
- 
-      router.push('/');
+
+      router.push("/");
+      router.refresh()
     } catch (error) {
       toast({
         title: "Something went wrong",
@@ -73,23 +74,23 @@ const FormEditElement = (props: formEditElementProps) => {
     }
   };
 
-    //Gereate passwor
-    const generateRamdomPass = () => {
-      const password = generatePass();
-      // console.log('mi pass es: ', password)
-      form.setValue("password", password);
-    };
-  
-    const copyClipBoard = async (value: string) => {
-      await navigator.clipboard.writeText(value);
-      toast({
-        title: "Value copied  ✅",
-      });
-    };
-  
-    const updateURL = () => {
-      form.setValue("urlWebsite", window.location.href);
-    };
+  //Gereate passwor
+  const generateRamdomPass = () => {
+    const password = generatePass();
+    // console.log('mi pass es: ', password)
+    form.setValue("password", password);
+  };
+
+  const copyClipBoard = async (value: string) => {
+    await navigator.clipboard.writeText(value);
+    toast({
+      title: "Value copied  ✅",
+    });
+  };
+
+  const updateURL = () => {
+    form.setValue("urlWebsite", window.location.href);
+  };
   return (
     <Form {...form}>
       <form

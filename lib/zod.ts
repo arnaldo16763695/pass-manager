@@ -37,5 +37,12 @@ export const registerFormSchema = z.object({
     password2: z.string().min(1).max(14),
 
 })
+export const formProfileSchema = z.object({
+    name: z.string().min(1).max(50),
+    email: z.string().min(1).email().max(50),
+    profileImage: z.string(),
+    id: z.string()
+
+})
 
 

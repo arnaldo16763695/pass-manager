@@ -1,4 +1,4 @@
-import { fetchElementById } from "@/app/dataElements";
+import { fetchElementById } from "@/app/lib/dataElements";
 import FormEditElement from "@/components/shared/formEditElement/FormEditElement";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";

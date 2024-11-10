@@ -30,6 +30,8 @@ import { Textarea } from "@/components/ui/textarea";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { FormAddElementProps } from "./formAddElement.type";
+import copyClipBoard from "@/lib/copyClipBoard";
+
 
 export default function FormAddElement(props: FormAddElementProps) {
   const { userId, closeDialog } = props;
@@ -89,13 +91,13 @@ export default function FormAddElement(props: FormAddElementProps) {
     // console.log('mi pass es: ', password)
     form.setValue("password", password);
   };
-
-  const copyClipBoard = async (value: string) => {
-    await navigator.clipboard.writeText(value);
+  
+  const copyClip = async (value: string) => {
+    copyClipBoard(value)
     toast({
       title: "Value copied  ✅",
     });
-  };
+  }; 
 
   const updateURL = () => {
     form.setValue("urlWebsite", window.location.href);
@@ -214,7 +216,7 @@ export default function FormAddElement(props: FormAddElementProps) {
                     className="absolute top-3 right-4 cursor-pointer"
                     size={18}
                     onClick={() => {
-                      copyClipBoard(field.value);
+                      copyClip(field.value);
                     }}
                   />
                 </div>
@@ -271,7 +273,7 @@ export default function FormAddElement(props: FormAddElementProps) {
                   />
                   <Copy
                     className="absolute top-3 right-2 cursor-pointer"
-                    onClick={() => copyClipBoard(field.value)}
+                    onClick={() => copyClip(field.value)}
                     size={18}
                   />
                 </div>

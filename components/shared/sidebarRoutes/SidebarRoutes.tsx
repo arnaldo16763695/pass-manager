@@ -80,7 +80,7 @@ export default function SidebarRoutes() {
                 ))
             }
 
-            <SingleItem href="/analytic" label="Analytics" icon={BarChart}/>
+            <SingleItem href="/statistics" label="Statistics" icon={BarChart}/>
             <SingleItem href="#" label="Sign out"  icon={Power} onClick={()=>signOut()}/>
         </div>
 
