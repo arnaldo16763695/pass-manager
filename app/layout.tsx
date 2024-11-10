@@ -9,8 +9,12 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Password Manger",
+  title: "Password Manager", 
   description: "Created by Arnaldo Espinoza",
+  manifest: "/manifest.json",
+  icons: {
+    icon: "/favicon.png", // Ruta al favicon en la carpeta public
+  },
 };
 
 export default function RootLayout({
