@@ -22,11 +22,12 @@ const StatisticsPage = async () => {
   //   console.log("repetidas: ", repeated);
   return (
     <div>
-      <div className="grid md:grid-cols-2 gap-4 mb-4 ">
+      <h1 className="text-xl md:text-3xl font-semibold p-6">Statistics</h1>
+      <div className="grid grid-cols-2 gap-2 ">
         <RepeatedPassChart repeated={repeated} unique={unique} />
-        <div>Second block</div>
+        <div className="border"></div>
       </div>
-      <div>Block</div>
+      <div className="w-full border p-4 h-32"></div>
     </div>
   );
 };

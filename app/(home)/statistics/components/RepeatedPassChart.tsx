@@ -23,16 +23,16 @@ export function RepeatedPassChart(props: RepeatedPasswordProp) {
   const { repeated, unique } = props;
   const totalPasswords = unique + repeated;
   const chartData = [
-    { month: "", unique, repeated },
+    { month: "April", repeated, unique },
   ]
-
+  
   const chartConfig = {
     unique: {
-      label: "Desktop",
+      label: "Unique",
       color: "hsl(var(--chart-1))",
     },
     repeated: {
-      label: "Mobile",
+      label: "Repeated",
       color: "hsl(var(--chart-5))",
     },
   } satisfies ChartConfig;
@@ -40,7 +40,7 @@ export function RepeatedPassChart(props: RepeatedPasswordProp) {
   return (
     <Card className="flex flex-col">
       <CardHeader className="items-center pb-0">
-        <CardTitle>Repeated Passwords vs Unique </CardTitle>
+        <CardTitle>Repeated Passwords vs Unique Password </CardTitle>
         <CardDescription>Review your repeated Password</CardDescription>
       </CardHeader>
       <CardContent className="flex flex-1 items-center pb-0">
