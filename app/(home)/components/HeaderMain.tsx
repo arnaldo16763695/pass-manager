@@ -40,7 +40,7 @@ export default function HeaderMain(props: HeaderMainProps) {
         <DropdownMenu open={openDropDown} onOpenChange={setOpenDropDown}>
           <DropdownMenuTrigger asChild>
             <Button>
-              Nueva <ChevronDown />
+              New <ChevronDown />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent className="p-0">
@@ -65,7 +65,7 @@ export default function HeaderMain(props: HeaderMainProps) {
         </DropdownMenu>
         <DialogContent className="sm:max-w-[825px]" aria-describedby="">
           <DialogHeader>
-            <DialogTitle>Nuevo elemento</DialogTitle>
+            <DialogTitle>New element</DialogTitle>
           </DialogHeader>
           {typeElement === "password" && <FormAddElement userId={userId} closeDialog={closeDialog} />}
           {typeElement === "folder" && <p>Form folder</p>}

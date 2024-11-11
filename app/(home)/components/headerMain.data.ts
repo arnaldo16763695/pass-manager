@@ -4,12 +4,12 @@ import { DataHeaderMainItemProps } from "./headerMain.type";
 export const dataHeaderMain: DataHeaderMainItemProps[] = [
     {
         icon: KeyRound,
-        text: 'Elemento',
+        text: 'Element',
         typeElement: 'password'
     },
     {
         icon: Folder,
-        text: 'Carpeta',
+        text: 'Folder',
         typeElement: 'folder'
     },
 ]
