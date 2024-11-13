@@ -16,7 +16,7 @@ const LoginPage = async () => {
     <div className="grid md:grid-cols-2 h-full max-h-screen overflow-hidden">
       <div className="flex justify-center h-full">
         <div className="text-white flex flex-col items-center justify-center w-full p-6 ">
-          <h1 className="text-blue-500 text-2xl text-center mb-5">AJE pass</h1>
+          <h1 className="text-blue-500 text-2xl text-center mb-5">AJE PASS</h1>
           <h2>Welcome back</h2>
           <p className="text-center mt-4 mb-6 text-slate-400 text-sm">
             Welcome back. Please enter your detail
