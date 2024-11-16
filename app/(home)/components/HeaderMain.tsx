@@ -63,7 +63,7 @@ export default function HeaderMain(props: HeaderMainProps) {
             </DropdownMenuLabel>
           </DropdownMenuContent>
         </DropdownMenu>
-        <DialogContent className="sm:max-w-[825px]" aria-describedby="">
+        <DialogContent className="sm:max-w-[825px] overflow-y-auto" aria-describedby="" >
           <DialogHeader>
             <DialogTitle>New element</DialogTitle>
           </DialogHeader>
